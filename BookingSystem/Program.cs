@@ -35,7 +35,7 @@ class Program
                     },
                 }
             },
-            
+
             new Host()
             {
                 HostName = "Booking system in Saint-Trope",
@@ -47,7 +47,7 @@ class Program
                         ApartmentName = "Apartment 2",
                         ApartmentArea = 90
                     },
-                    
+
                     new Apartment()
                     {
                         ApartmentName = "Apartment 3",
@@ -56,7 +56,7 @@ class Program
                 }
             }
         };
-        
+
         var hostslist = from Host in hosts
             select Host;
 
@@ -65,7 +65,7 @@ class Program
         {
             Console.WriteLine($"{host.HostName}, ID: {host.HostId}");
         }
-        
+
         Console.WriteLine("\nEnter host Id:");
         int hostId = int.Parse(Console.ReadLine());
 
@@ -73,13 +73,18 @@ class Program
         {
             case 101:
                 Console.WriteLine("Apartment 1 with 70² area");
-                break; 
+                break;
             case 202:
                 Console.WriteLine("Apartment 2 with 90² area \nApartment 3 with 88² area");
                 break;
             default:
-                Console.WriteLine("Wrong number"); 
+                Console.WriteLine("Wrong number");
                 break;
         }
     }
-} 
+}
+
+
+
+
+//
