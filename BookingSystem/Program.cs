@@ -2,84 +2,71 @@
 using System.Collections.Generic;
 using System.Linq;
 
-public class Host
-{
-    public string HostName { get; set; }
-    public int HostId { get; set; }
-    public List<Apartment> Apartment { get; set; }   
-
-}
-
-public class Apartment
-{
-    public string ApartmentName { get; set; }
-    public int ApartmentArea { get; set; }
-}
+namespace BookingSystem;
 
 class Program
 {
     static void Main(string[] args)
     {
-        List<Host> hosts = new List<Host>()
+        List<Host> hosts = GetHosts();
+        
+        Console.WriteLine("All hosts:");
+        foreach (var host in hosts)
+        {
+            Console.WriteLine($"{host.Name}, ID: {host.Id}");
+        }
+        
+        Console.WriteLine("\nEnter host Id:");
+        int hostId = int.Parse(Console.ReadLine());
+        
+        var selectedHost = hosts.FirstOrDefault(h => h.Id == hostId);
+        if (selectedHost != null)
+        {
+            Console.WriteLine($"Apartments of host '{selectedHost.Name}'");
+            foreach (var apartment in selectedHost.Apartments)
+                Console.WriteLine($"{apartment.Name} with {apartment.Area}² area");
+        }
+        else
+            Console.WriteLine("Wrong number");
+    }
+    
+    static List<Host> GetHosts()
+    {
+        return new List<Host>()
         {
             new Host()
             {
-                HostName = "Booking system in Monaco",
-                HostId = 101,
-                Apartment = new List<Apartment>()
+                Name = "Booking system in Monaco", 
+                Id = 101, 
+                Apartments = new List<Apartment>()
                 {
                     new Apartment()
                     {
-                        ApartmentName = "Apartment 1",
-                        ApartmentArea = 70
-                    },
+                        Name = "Apartment 1",
+                        Area = 70
+                    }
                 }
             },
             
             new Host()
             {
-                HostName = "Booking system in Saint-Trope",
-                HostId = 202,
-                Apartment = new List<Apartment>()
+                Name = "Booking system in Saint-Trope", 
+                Id = 202, 
+                Apartments = new List<Apartment>()
                 {
                     new Apartment()
-                    {
-                        ApartmentName = "Apartment 2",
-                        ApartmentArea = 90
+                    { 
+                        Name = "Apartment 2",
+                        Area = 90
                     },
                     
                     new Apartment()
                     {
-                        ApartmentName = "Apartment 3",
-                        ApartmentArea = 88
+                        Name = "Apartment 3",
+                        Area = 70
                     }
                 }
             }
         };
-        
-        var hostslist = from Host in hosts
-            select Host;
-
-        Console.WriteLine("All hosts:");
-        foreach (var host in hostslist)
-        {
-            Console.WriteLine($"{host.HostName}, ID: {host.HostId}");
-        }
-        
-        Console.WriteLine("\nEnter host Id:");
-        int hostId = int.Parse(Console.ReadLine());
-
-        switch (hostId)
-        {
-            case 101:
-                Console.WriteLine("Apartment 1 with 70² area");
-                break; 
-            case 202:
-                Console.WriteLine("Apartment 2 with 90² area \nApartment 3 with 88² area");
-                break;
-            default:
-                Console.WriteLine("Wrong number"); 
-                break;
-        }
     }
 } 
