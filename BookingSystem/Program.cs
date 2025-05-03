@@ -30,10 +30,10 @@ class Program
                     ReadHosts(hosts);
                     break;
                 case "3":
-                    UpdateUser(hosts);
+                    UpdateHost(hosts);
                     break;
                 case "4":
-                    DeleteUser(hosts);
+                    DeleteHost(hosts);
                     break;
                 case "5":
                     return;
@@ -90,7 +90,7 @@ class Program
             Console.WriteLine("Wrong number");
     }
 
-    static void UpdateUser(List<Host> hosts)
+    static void UpdateHost(List<Host> hosts)
     {
         Console.WriteLine("\nWrite host Id to update:");
         if (int.TryParse(Console.ReadLine(), out int id))
@@ -106,7 +106,7 @@ class Program
         }
     }
 
-    static void DeleteUser(List<Host> hosts)
+    static void DeleteHost(List<Host> hosts)
     {
         Console.WriteLine("\nWrite host Id to delete:");
         if (int.TryParse(Console.ReadLine(), out int id))
