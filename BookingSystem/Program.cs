@@ -8,9 +8,9 @@ class Program
 {
     static void Main(string[] args)
     {
-        GetHost host = new GetHost();
+        HostFactory host = new HostFactory();
         HostService service = new HostService();
-        List<Host> hosts = host.GetHosts();
+        List<Host> hosts = host.CreateMany();
 
         while (true)
         {

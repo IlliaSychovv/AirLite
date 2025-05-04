@@ -1,8 +1,8 @@
 namespace BookingSystem;
 
-public class GetHost
+public class HostFactory
 {
-    public List<Host> GetHosts()
+    public List<Host> CreateMany()
     {
         return new List<Host>()
         {
