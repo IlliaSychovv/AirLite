@@ -13,6 +13,12 @@ class Program
         HostFactory host = new HostFactory();
         HostService service = new HostService();
         List<Host> hosts = service.LoadHostsFromJSON();
+        if (hosts.Count == 0)
+        {
+            Console.WriteLine("File is empty");
+            hosts = host.CreateMany();
+            service.SaveHostsToJSON(hosts);
+        }
 
         while (true)
         {

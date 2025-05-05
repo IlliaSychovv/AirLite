@@ -21,6 +21,7 @@ public class HostService
         {
             Name = name1,
             Id = hosts.Max(h => h.Id) + 1,
+            //Id = hosts.Any() ? hosts.Max(h => h.Id) + 1 : 1,
             Apartments = new List<Apartment>
             {
                 new Apartment { Name = name2, Area = area }
