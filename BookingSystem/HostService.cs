@@ -1,7 +1,11 @@
+using System.Text.Json;
+
 namespace BookingSystem;
 
 public class HostService
 {
+    static string filePath = "hosts.json";
+    
     public void CreateHost(List<Host> hosts)
     {
         Console.WriteLine("\nAdd a new host:");
@@ -78,5 +82,29 @@ public class HostService
             else
                 Console.WriteLine("Wrong number of Id");
         }
+    }
+
+    public void SaveHostsToJSON(List<Host> hosts)
+    {
+        string json = JsonSerializer.Serialize(hosts, new JsonSerializerOptions { WriteIndented = true });
+        File.WriteAllText(filePath, json);
+        Console.WriteLine("\nThe data was saved to a JSON file.");
+    }
+
+    public List<Host> LoadHostsFromJSON()
+    {
+        if (File.Exists(filePath))
+        {
+            string json = File.ReadAllText(filePath);
+            try
+            {
+                return JsonSerializer.Deserialize<List<Host>>(json);
+            }
+            catch
+            {
+                Console.WriteLine("Fail");
+            }
+        }
+        return new List<Host>();
     }
 }

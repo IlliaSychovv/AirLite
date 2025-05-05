@@ -6,19 +6,24 @@ namespace BookingSystem;
 
 class Program
 {
+    static string filePath = "hosts.json";
+    
     static void Main(string[] args)
     {
         HostFactory host = new HostFactory();
         HostService service = new HostService();
-        List<Host> hosts = host.CreateMany();
+        List<Host> hosts = service.LoadHostsFromJSON();
 
         while (true)
         {
-            Console.WriteLine("\n1. Create host");
+            Console.WriteLine("\n----Menu----");
+            Console.WriteLine("1. Create host");
             Console.WriteLine("2. Read host");
             Console.WriteLine("3. Update host");
             Console.WriteLine("4. Delete host");
-            Console.WriteLine("5. Exit");
+            Console.WriteLine("5. Save books to a file");
+            Console.WriteLine("6. Download books from file");
+            Console.WriteLine("7. Exit");
             Console.Write("Choose an option: ");
             
             string choice = Console.ReadLine();
@@ -37,6 +42,12 @@ class Program
                     service.DeleteHost(hosts);
                     break;
                 case "5":
+                    service.SaveHostsToJSON(hosts);
+                    break;
+                case "6":
+                    service.LoadHostsFromJSON();   
+                    break;
+                case "7":
                     return;
                 default:
                     Console.WriteLine("Invalid option.");
