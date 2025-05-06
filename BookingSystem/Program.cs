@@ -6,7 +6,7 @@ namespace BookingSystem;
 
 class Program
 {
-    static string filePath = "hosts.json";
+    static string filePath = Constants.filePath;
     
     static void Main(string[] args)
     {

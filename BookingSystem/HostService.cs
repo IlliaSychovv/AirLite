@@ -4,7 +4,7 @@ namespace BookingSystem;
 
 public class HostService
 {
-    static string filePath = "hosts.json";
+    static string filePath = Constants.filePath;
     
     public void CreateHost(List<Host> hosts)
     {
@@ -86,9 +86,16 @@ public class HostService
 
     public void SaveHostsToJSON(List<Host> hosts)
     {
-        string json = JsonSerializer.Serialize(hosts, new JsonSerializerOptions { WriteIndented = true });
-        File.WriteAllText(filePath, json);
-        Console.WriteLine("\nThe data was saved to a JSON file.");
+        try
+        {
+            string json = JsonSerializer.Serialize(hosts, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText(filePath, json);
+            Console.WriteLine("\nThe data was saved to a JSON file.");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Error: " + ex.Message);
+        }
     }
 
     public List<Host> LoadHostsFromJSON()
