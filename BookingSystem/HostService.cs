@@ -23,7 +23,7 @@ public class HostService
             Id = hosts.Max(h => h.Id) + 1, 
             Apartments = new List<Apartment>
             {
-                new Apartment { Name = name2, Area = area }
+                new Apartment(100) { Name = name2, Area = area }
             }
         };
         
