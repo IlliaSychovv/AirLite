@@ -12,10 +12,10 @@ public class HostFactory
                 Id = 101, 
                 Apartments = new List<Apartment>()
                 {
-                    new Apartment()
+                    new Apartment(100)
                     {
                         Name = "Apartment 1",
-                        Area = 70
+                        Area = 70,
                     }
                 }
             },
@@ -26,13 +26,13 @@ public class HostFactory
                 Id = 202, 
                 Apartments = new List<Apartment>()
                 {
-                    new Apartment()
+                    new Apartment(100)
                     { 
                         Name = "Apartment 2",
                         Area = 90
                     },
                     
-                    new Apartment()
+                    new Apartment(100)
                     {
                         Name = "Apartment 3",
                         Area = 70
