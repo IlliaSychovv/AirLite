@@ -27,8 +27,8 @@ class Program
             Console.WriteLine("2. Read host");
             Console.WriteLine("3. Update host");
             Console.WriteLine("4. Delete host");
-            Console.WriteLine("5. Save books to a file");
-            Console.WriteLine("6. Download books from file");
+            Console.WriteLine("5. Save hosts to a file");
+            Console.WriteLine("6. Download hosts from file");
             Console.WriteLine("7. Exit");
             Console.Write("Choose an option: ");
             
